@@ -17,14 +17,21 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered content-class="bg-grey-1">
       <div class="text-h5 q-py-sm bg-grey-9 text-white" align="center" style="height:50px;">Menu</div>
-      <div class="text-h6 q-py-md q-pl-md">Member</div>
+      <div class="text-h6 q-py-sm q-pl-md">Member</div>
       <div
-        class="text-h6 q-pb-md q-pl-md"
+        class="text-h6 q-py-sm q-pl-md cursor-pointer"
         :class="{'bg-grey-8 text-white':pageName=='categoryList'}"
+        @click="categoryBtn()"
       >Category</div>
-      <div class="text-h6 q-pb-md q-pl-md">Product</div>
+      <div class="text-h6 q-py-sm q-pl-md">Product</div>
+      <div
+        class="text-h6 q-py-sm q-pl-md cursor-pointer"
+        :class="{'bg-grey-8 text-white':pageName=='setting'}"
+        @click="settingBtn()"
+      >Setting</div>
       <hr />
-      <div class="text-h6 q-pb-md q-pl-md">Log out</div>
+
+      <div class="text-h6 q-pb-md q-pl-md cursor-pointer" @click="logoutBtn()">Log out</div>
     </q-drawer>
     <q-page-container>
       <router-view />
@@ -42,17 +49,56 @@ export default {
       pageName: "ProductList"
     };
   },
+  methods: {
+    logoutBtn() {
+      this.$q
+        .dialog({
+          title: "Confirm",
+          message: "Would you like to log out?",
+          cancel: true,
+          persistent: true
+        })
+        .onOk(() => {
+          this.$q.localStorage.clear();
+          this.$router.push("/login");
+        });
+    },
+    settingBtn() {
+      if (this.$route.name != "setting") {
+        this.$router.push("/setting");
+      }
+    },
+    categoryBtn() {
+      if (this.$route.name != "categoryList") {
+        this.$router.push("/category/f");
+      }
+    }
+  },
   watch: {
     "$route.name": function(data) {
-      if (data == "categoryList") {
+      if (
+        data == "categoryList" ||
+        data == "categoryAdd" ||
+        data == "categoryEdit"
+      ) {
         this.pageName = "categoryList";
-      } else {
+      } else if (data == "setting") {
+        this.pageName = "setting";
       }
     }
   },
   mounted() {
-    if (this.$route.name == "categoryList") {
+    if (this.$q.localStorage.getItem("login") != "4473567") {
+      this.$router.push("/login");
+    }
+    if (
+      this.$route.name == "categoryList" ||
+      this.$route.name == "categoryAdd" ||
+      this.$route.name == "categoryEdit"
+    ) {
       this.pageName = "categoryList";
+    } else if (this.$route.name == "setting") {
+      this.pageName = "setting";
     }
   }
 };

@@ -7,10 +7,10 @@
         align="center"
       >Saisawart Control Panel</div>
       <div style="width:90%; margin:auto" class="q-py-md">
-        <q-input label="username" v-model="userName" outlined />
+        <q-input label="username" v-model="dataInput.userName" outlined />
       </div>
       <div style="width:90%; margin:auto" class="q-pb-md">
-        <q-input label="password" v-model="password" type="password" outlined />
+        <q-input label="password" v-model="dataInput.password" type="password" outlined />
       </div>
       <div align="center">
         <q-btn label="เข้าสู่ระบบ" color="teal" style="width:300px;" @click="loginBtn()" />
@@ -20,16 +20,34 @@
 </template>
 
 <script>
+import { db } from "../router/index.js";
 export default {
   data() {
     return {
-      userName: "",
-      password: ""
+      dataInput: {
+        userName: "",
+        password: ""
+      }
     };
   },
   methods: {
     loginBtn() {
-      this.$router.push("category");
+      db.collection("login")
+        .where("username", "==", this.dataInput.userName)
+        .where("password", "==", this.dataInput.password)
+        .get()
+        .then(doc => {
+          if (doc.docs.length > 0) {
+            this.$q.localStorage.set("login", "4473567");
+            this.$router.push("category/f");
+          } else {
+            this.$q.notify({
+              message: "Username / password incorrect",
+              icon: "fas fa-exclamation-triangle",
+              color: "negative"
+            });
+          }
+        });
     }
   }
 };

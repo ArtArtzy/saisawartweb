@@ -5,6 +5,22 @@ import routes from './routes'
 
 Vue.use(VueRouter)
 
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyCow_qyDpuhp_PyYyg32p9oIUV1xsKpFm8",
+  authDomain: "saisawart-52861.firebaseapp.com",
+  databaseURL: "https://saisawart-52861.firebaseio.com",
+  projectId: "saisawart-52861",
+  storageBucket: "saisawart-52861.appspot.com",
+  messagingSenderId: "182376624637",
+  appId: "1:182376624637:web:f259765e8e9f4103416994",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+export const db = firebase.firestore();
+const storage = firebase.storage();
+export const st = storage.ref()
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;

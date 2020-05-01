@@ -6,16 +6,31 @@
           <tr>
             <td style="width:80px;">Page :</td>
             <td>
-              <q-radio v-model="category" val="Furniture" label="Furniture" />
+              <q-radio
+                v-model="category"
+                val="Furniture"
+                label="Furniture"
+                @input="showCategory()"
+              />
             </td>
             <td>
-              <q-radio v-model="category" val="HomeDecor" label="HomeDecor" />
+              <q-radio
+                v-model="category"
+                val="HomeDecor"
+                label="HomeDecor"
+                @input="showCategory()"
+              />
             </td>
           </tr>
         </table>
       </div>
       <div class="col q-pt-md" align="right">
-        <q-btn label="+ Add New Category" class="bg-grey-8 text-white" no-caps />
+        <q-btn
+          label="+ Add New Category"
+          class="bg-grey-8 text-white"
+          no-caps
+          @click="addNewBtn()"
+        />
       </div>
     </div>
     <div style="width:100%; max-width:800px; margin:auto">
@@ -25,16 +40,16 @@
             <q-td key="orderId" :props="props" style="width:200px;">
               <div class="q-py-sm">{{ props.row.orderId }}</div>
             </q-td>
-            <q-td key="orderId" :props="props">
-              <div class="q-py-sm" align="left">{{ props.row.catName }}</div>
+            <q-td key="catName" :props="props">
+              <div class="q-py-sm" align="left">{{ props.row.categoryName }}</div>
             </q-td>
             <q-td key="delete" :props="props" style="width:100px;">
-              <div class="q-py-sm">
+              <div class="q-py-sm cursor-pointer" @click="deleteCat(props.row.id)">
                 <u>Delete</u>
               </div>
             </q-td>
             <q-td key="edit" :props="props" style="width:100px;">
-              <div class="q-py-sm">
+              <div class="q-py-sm cursor-pointer" @click="editCat(props.row.id)">
                 <u>Edit</u>
               </div>
             </q-td>
@@ -46,6 +61,7 @@
 </template>
 
 <script>
+import { db } from "../router/index.js";
 export default {
   data() {
     return {
@@ -53,18 +69,8 @@ export default {
       pagination: {
         rowsPerPage: 0
       },
-      data: [
-        {
-          orderId: 100,
-          catName: "Table",
-          key: "asdfhklkhofsa"
-        },
-        {
-          orderId: 200,
-          catName: "Chair",
-          key: "asdfhkldasdasdkhofsa"
-        }
-      ],
+      categoryFullList: [],
+      data: [],
       columns: [
         {
           name: "orderId",
@@ -88,6 +94,71 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    addNewBtn() {
+      if (this.category == "Furniture") {
+        this.$router.push("/category/add/f");
+      } else {
+        this.$router.push("/category/add/h");
+      }
+    },
+    loadCategoryName() {
+      this.categoryFullList = [];
+      db.collection("category")
+        .get()
+        .then(doc => {
+          doc.forEach(data => {
+            let temp = {
+              id: data.id
+            };
+            let tempFinal = { ...temp, ...data.data() };
+            this.categoryFullList.push(tempFinal);
+          });
+          this.categoryFullList.sort((a, b) => {
+            return Number(a.orderId) - Number(b.orderId);
+          });
+          this.showCategory();
+        });
+    },
+    showCategory() {
+      this.data = [];
+      this.data = this.categoryFullList.filter(x => x.page == this.category);
+    },
+    deleteCat(id) {
+      let catName = this.categoryFullList.filter(x => x.id == id);
+      this.$q
+        .dialog({
+          title: "Confirm",
+          message: "Would you like to delete " + catName[0].categoryName + "?",
+          cancel: true,
+          persistent: true
+        })
+        .onOk(() => {
+          db.collection("category")
+            .doc(id)
+            .delete()
+            .then(() => {
+              this.loadCategoryName();
+              this.$q.notify({
+                message: "Delete completely",
+                icon: "fas fa-check-circle",
+                color: "secondary"
+              });
+            });
+        });
+    },
+    editCat(id) {
+      this.$router.push("/category/edit/" + id);
+    }
+  },
+  mounted() {
+    if (this.$route.params.page == "f") {
+      this.category = "Furniture";
+    } else {
+      this.category = "HomeDecor";
+    }
+    this.loadCategoryName();
   }
 };
 </script>
