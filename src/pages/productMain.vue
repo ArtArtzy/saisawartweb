@@ -3,9 +3,9 @@
     <div
       class="col-12 text-h5 q-pt-md"
       align="center"
-      style="width:100%; max-width:800px; margin:auto"
-    >Category</div>
-    <div class="q-pa-md row" style="width:100%; max-width:800px; margin:auto">
+      style="width:100%; max-width:1200px; margin:auto"
+    >Product</div>
+    <div class="q-pa-md row" style="width:100%; max-width:1200px; margin:auto">
       <div class="col">
         <table>
           <tr>
@@ -30,23 +30,34 @@
         </table>
       </div>
       <div class="col q-pt-md" align="right">
-        <q-btn
-          label="+ Add New Category"
-          class="bg-grey-8 text-white"
-          no-caps
-          @click="addNewBtn()"
-        />
+        <q-btn label="+ Add New Product" class="bg-grey-8 text-white" no-caps @click="addNewBtn()" />
       </div>
     </div>
-    <div style="width:100%; max-width:800px; margin:auto">
+    <div style="width:100%; max-width:1200px; margin:auto">
       <q-table :data="data" :columns="columns" row-key="name" :pagination.sync="pagination">
         <template v-slot:body="props">
           <q-tr :props="props">
-            <q-td key="orderId" :props="props" style="width:200px;">
-              <div class="q-py-sm">{{ props.row.orderId }}</div>
+            <q-td key="code" :props="props" style="width:100px;">
+              <div class="q-py-sm">
+                <div class="text-h6">{{ props.row.code }}</div>
+
+                <div v-if="props.row.newproduct">
+                  <q-chip icon="star" color="grey-8" text-color="white">New</q-chip>
+                </div>
+              </div>
             </q-td>
-            <q-td key="catName" :props="props">
-              <div class="q-py-sm" align="left">{{ props.row.categoryName }}</div>
+            <q-td key="image" :props="props" style="width:200px;">
+              <div class="q-py-sm" align="left">
+                <img :src="props.row.imgURL" style="width:150px; height:150px;" />
+              </div>
+            </q-td>
+            <q-td key="des" :props="props">
+              <div class="q-py-sm" align="left">
+                <div class="text-h4">{{ props.row.code }}</div>
+                <div class="text-h6">{{ props.row.name }}</div>
+                <div v-if="props.row.size.length !=0">size : {{ props.row.size }}</div>
+                <div>{{ props.row.description }}</div>
+              </div>
             </q-td>
             <q-td key="delete" :props="props" style="width:100px;">
               <div class="q-py-sm cursor-pointer" @click="deleteCat(props.row.id)">
@@ -67,24 +78,30 @@
 
 <script>
 import { db } from "../router/index.js";
+import { st } from "../router/index.js";
 export default {
   data() {
     return {
       category: "Furniture",
       pagination: {
-        rowsPerPage: 0
+        rowsPerPage: 20
       },
-      categoryFullList: [],
+      productFullList: [],
       data: [],
       columns: [
         {
-          name: "orderId",
-          label: "Order Id",
+          name: "code",
+          label: "Code",
           align: "center"
         },
         {
-          name: "catName",
-          label: "Category Name",
+          name: "image",
+          label: "Image",
+          align: "center"
+        },
+        {
+          name: "des",
+          label: "Description",
           align: "left"
         },
         {
@@ -103,14 +120,14 @@ export default {
   methods: {
     addNewBtn() {
       if (this.category == "Furniture") {
-        this.$router.push("/category/add/f");
+        this.$router.push("/product/add/f");
       } else {
-        this.$router.push("/category/add/h");
+        this.$router.push("/product/add/h");
       }
     },
-    loadCategoryName() {
-      this.categoryFullList = [];
-      db.collection("category")
+    loadProductName() {
+      this.productFullList = [];
+      db.collection("product")
         .get()
         .then(doc => {
           doc.forEach(data => {
@@ -118,33 +135,34 @@ export default {
               id: data.id
             };
             let tempFinal = { ...temp, ...data.data() };
-            this.categoryFullList.push(tempFinal);
+            this.productFullList.push(tempFinal);
           });
-          this.categoryFullList.sort((a, b) => {
-            return Number(a.orderId) - Number(b.orderId);
+          this.productFullList.sort((a, b) => {
+            return a.code > b.code ? 1 : -1;
           });
           this.showCategory();
         });
     },
     showCategory() {
       this.data = [];
-      this.data = this.categoryFullList.filter(x => x.page == this.category);
+      this.data = this.productFullList.filter(x => x.page == this.category);
     },
     deleteCat(id) {
-      let catName = this.categoryFullList.filter(x => x.id == id);
+      let catName = this.productFullList.filter(x => x.id == id);
       this.$q
         .dialog({
           title: "Confirm",
-          message: "Would you like to delete " + catName[0].categoryName + "?",
+          message: "Would you like to delete " + catName[0].code + "?",
           cancel: true,
           persistent: true
         })
         .onOk(() => {
-          db.collection("category")
+          db.collection("product")
             .doc(id)
             .delete()
             .then(() => {
-              this.loadCategoryName();
+              st.child("/image/" + id + ".jpg").delete();
+              this.loadProductName();
               this.$q.notify({
                 message: "Delete completely",
                 icon: "fas fa-check-circle",
@@ -154,7 +172,7 @@ export default {
         });
     },
     editCat(id) {
-      this.$router.push("/category/edit/" + id);
+      this.$router.push("/product/edit/" + id);
     }
   },
   mounted() {
@@ -163,7 +181,7 @@ export default {
     } else {
       this.category = "HomeDecor";
     }
-    this.loadCategoryName();
+    this.loadProductName();
   }
 };
 </script>

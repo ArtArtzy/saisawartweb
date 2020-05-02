@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-h5 q-pt-sm" align="center">Edit Category</div>
+    <div class="text-h5 q-pt-md" align="center">Edit Category</div>
     <div style="width:100%; max-width:600px; margin:auto">
       <div class="text-body1 q-pt-md">
         <div class="col">

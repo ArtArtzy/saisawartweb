@@ -17,13 +17,21 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered content-class="bg-grey-1">
       <div class="text-h5 q-py-sm bg-grey-9 text-white" align="center" style="height:50px;">Menu</div>
-      <div class="text-h6 q-py-sm q-pl-md">Member</div>
+      <div
+        class="text-h6 q-py-sm q-pl-md cursor-pointer"
+        :class="{'bg-grey-8 text-white':pageName=='member'}"
+        @click="memberBtn()"
+      >Member</div>
       <div
         class="text-h6 q-py-sm q-pl-md cursor-pointer"
         :class="{'bg-grey-8 text-white':pageName=='categoryList'}"
         @click="categoryBtn()"
       >Category</div>
-      <div class="text-h6 q-py-sm q-pl-md">Product</div>
+      <div
+        class="text-h6 q-py-sm q-pl-md cursor-pointer"
+        :class="{'bg-grey-8 text-white':pageName=='product'}"
+        @click="productBtn()"
+      >Product</div>
       <div
         class="text-h6 q-py-sm q-pl-md cursor-pointer"
         :class="{'bg-grey-8 text-white':pageName=='setting'}"
@@ -72,6 +80,16 @@ export default {
       if (this.$route.name != "categoryList") {
         this.$router.push("/category/f");
       }
+    },
+    memberBtn() {
+      if (this.$route.name != "member") {
+        this.$router.push("/member");
+      }
+    },
+    productBtn() {
+      if (this.$route.name != "product") {
+        this.$router.push("/product/f");
+      }
     }
   },
   watch: {
@@ -84,6 +102,10 @@ export default {
         this.pageName = "categoryList";
       } else if (data == "setting") {
         this.pageName = "setting";
+      } else if (data == "member") {
+        this.pageName = "member";
+      } else {
+        this.pageName = "product";
       }
     }
   },
@@ -99,6 +121,10 @@ export default {
       this.pageName = "categoryList";
     } else if (this.$route.name == "setting") {
       this.pageName = "setting";
+    } else if (this.$route.name == "member") {
+      this.pageName = "member";
+    } else {
+      this.pageName = "product";
     }
   }
 };

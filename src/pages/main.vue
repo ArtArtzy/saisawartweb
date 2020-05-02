@@ -112,6 +112,8 @@
                 label-color="white"
                 color="white"
                 dark
+                v-model="emailSubscribe"
+                @keyup.enter="subscribeBtn()"
               >
                 <template v-slot:prepend>
                   <q-icon name="far fa-envelope" />
@@ -125,6 +127,7 @@
                 label="Subscribe"
                 no-caps
                 style="height:54px; width:120px;"
+                @click="subscribeBtn()"
               />
             </div>
           </div>
@@ -148,6 +151,8 @@
               style=" width:100%; max-width:500px;"
               label-color="white"
               color="white"
+              v-model="emailSubscribe"
+              @keyup.enter="subscribeBtn()"
             >
               <template v-slot:prepend>
                 <q-icon name="far fa-envelope" />
@@ -161,6 +166,7 @@
               label="Subscribe"
               no-caps
               style="height:54px; width:100%; max-width:500px;"
+              @click="subscribeBtn()"
             />
           </div>
         </div>
@@ -172,6 +178,7 @@
 </template>
 
 <script>
+import { db } from "../router/index.js";
 import appFooter from "../components/footer.vue";
 import appMenu from "../components/menu.vue";
 export default {
@@ -180,7 +187,8 @@ export default {
       tab: "home",
       innerWidth: window.innerWidth,
       innerHeight: window.innerHeight,
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
+      emailSubscribe: ""
     };
   },
   components: {
@@ -188,6 +196,49 @@ export default {
     appMenu
   },
   methods: {
+    subscribeBtn() {
+      var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (this.emailSubscribe.match(mailformat)) {
+        this.$q
+          .dialog({
+            title: "Confirmation",
+            message: "Please re-enter your email to confirm again",
+            prompt: {
+              model: "",
+              type: "text" // optional
+            },
+            cancel: true,
+            persistent: true
+          })
+          .onOk(data => {
+            if (data == this.emailSubscribe) {
+              let currentDate = new Date();
+              db.collection("member")
+                .add({
+                  email: this.emailSubscribe,
+                  timestamp: currentDate.getTime()
+                })
+                .then(() => {
+                  this.emailSubscribe = "";
+                });
+            } else {
+              this.$q.notify({
+                message: "Your email address is not same",
+                icon: "fas fa-exclamation-triangle",
+                color: "negative"
+              });
+              return;
+            }
+          });
+      } else {
+        this.$q.notify({
+          message: "Please input your email address",
+          icon: "fas fa-exclamation-triangle",
+          color: "negative"
+        });
+        return;
+      }
+    },
     onResize(size) {
       (this.innerWidth = size.width), (this.innerHeight = size.height);
     }

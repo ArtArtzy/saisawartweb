@@ -54,6 +54,26 @@ const routes = [
         component: () => import("pages/setting.vue"),
         name: "setting"
       },
+      {
+        path: "/member",
+        component: () => import("pages/member.vue"),
+        name: "member"
+      },
+      {
+        path: "/product/:page",
+        component: () => import("pages/productMain.vue"),
+        name: "productList"
+      },
+      {
+        path: "/product/add/:page",
+        component: () => import("pages/productAdd.vue"),
+        name: "productAdd"
+      },
+      {
+        path: "/product/edit/:id",
+        component: () => import("pages/productEdit.vue"),
+        name: "productEdit"
+      },
     ]
   }
 

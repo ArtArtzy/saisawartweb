@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-h5 q-pt-sm" align="center">Setting</div>
+    <div class="text-h5 q-pt-md" align="center">Setting</div>
     <div style="width:100%; max-width:400px; margin:auto">
       <div class="q-pt-md">
         <q-input label="Username" v-model="dataInput.username" stack-label outlined />
@@ -79,6 +79,6 @@ export default {
 
 <style lang="sass"  scoped>
 .myBtn
-    min-width: 250px
+  min-width: 250px
 </style> >
 
