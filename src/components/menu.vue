@@ -29,10 +29,15 @@
           <div class="col-4 setHeightMenu item-cente" align="Center">
             <div style="height:40px;" class="row">
               <div class="col-11">
-                <q-input class="q-pt-md" placeholder="Search  here" />
+                <q-input
+                  class="q-pt-md"
+                  placeholder="Search  here"
+                  v-model="txtSearch"
+                  @keyup.enter="searchBtn()"
+                />
               </div>
               <div class="col" style="width:70px">
-                <q-icon name="fas fa-search" />
+                <q-icon name="fas fa-search" class="cursor-pointer" @click="searchBtn()" />
               </div>
             </div>
           </div>
@@ -64,9 +69,10 @@
           <div class="col-1" style="width:70px;">
             <q-icon
               name="fas fa-search"
-              class="q-pt-md text-grey-8"
+              class="q-pt-md text-grey-8 cursor-pointer"
               size="sm"
               style="padding-top:28px;"
+              @click="showSearchBox()"
             />
           </div>
         </div>
@@ -108,10 +114,35 @@ export default {
       innerWidth: window.innerWidth,
       innerHeight: window.innerHeight,
       leftDrawerOpen: false,
-      tab: "home"
+      tab: "home",
+      txtSearch: ""
     };
   },
   methods: {
+    searchBtn() {
+      this.$router.push("/search/" + this.txtSearch);
+      this.txtSearch = "";
+    },
+    showSearchBox() {
+      this.$q
+        .dialog({
+          title: "Search ",
+          message: "Which product name / product code are you looking for?",
+          prompt: {
+            model: "",
+            type: "text" // optional
+          },
+          cancel: true,
+          persistent: true
+        })
+        .onOk(data => {
+          this.txtSearch = data;
+          this.searchBtn();
+        })
+        .onCancel(() => {
+          // console.log('>>>> Cancel')
+        });
+    },
     onResize(size) {
       (this.innerWidth = size.width), (this.innerHeight = size.height);
     }

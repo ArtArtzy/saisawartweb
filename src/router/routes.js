@@ -31,11 +31,18 @@ const routes = [
 
   },
   {
+    path: '/search/:key',
+    component: () => import('pages/search.vue'),
+    name: 'search'
+
+  },
+  {
     path: '/login',
     component: () => import('pages/login.vue'),
     name: 'login'
 
   },
+
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
