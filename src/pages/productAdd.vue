@@ -63,7 +63,7 @@
 <script>
 import { db } from "../router/index.js";
 import { st } from "../router/index.js";
-import furnitureVue from "./furniture.vue";
+
 export default {
   data() {
     return {
@@ -165,7 +165,7 @@ export default {
       this.dataInput.page = "Furniture";
     } else {
       this.categoryTitle = "HomeDecor";
-      this.dataInput.page = "HomeDecor";
+      this.dataInput.page = "Homedecor";
     }
     this.loadCat();
   }

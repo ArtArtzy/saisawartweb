@@ -72,7 +72,7 @@
 <script>
 import { db } from "../router/index.js";
 import { st } from "../router/index.js";
-import furnitureVue from "./furniture.vue";
+
 export default {
   data() {
     return {

@@ -134,7 +134,7 @@ export default {
   },
   methods: {
     addNewBtn() {
-      if (this.category == "Furniture") {
+      if (this.page == "Furniture") {
         this.$router.push("/product/add/f");
       } else {
         this.$router.push("/product/add/h");

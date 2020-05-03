@@ -20,7 +20,7 @@ const routes = [
   },
   {
     path: '/homedecor/:cat',
-    component: () => import('pages/product.vue'),
+    component: () => import('pages/product2.vue'),
     name: 'Homedecor'
 
   },
