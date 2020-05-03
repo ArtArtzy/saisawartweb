@@ -6,7 +6,9 @@
       <!-- For menu 1024px++ -->
       <div class="row" v-if="innerWidth > 1024">
         <div style="width:300px">
-          <img src="statics/image/logo.jpg" alt="Saisawart Logo" class="cursor-pointer" />
+          <router-link to="/" class="notext cursor-pointer">
+            <img src="statics/image/logo.jpg" alt="Saisawart Logo" />
+          </router-link>
         </div>
         <div class="col row text-h6 q-px-md">
           <div class="col-2 setHeightMenu textLink item-center" align="Center">
@@ -51,7 +53,9 @@
             />
           </div>
           <div class="col">
-            <img src="statics/image/logo.jpg" alt="Saisawart Logo" style="height: 50px;" />
+            <router-link to="/" class="notext cursor-pointer">
+              <img src="statics/image/logo.jpg" alt="Saisawart Logo" style="height: 50px;" />
+            </router-link>
           </div>
 
           <div class="col-2" style="width:250px;" v-if="innerWidth>=600">
@@ -75,13 +79,21 @@
           bordered
           content-class="bg-white"
         >
-          <div class="menuMobile textLink">Home</div>
+          <router-link to="/" class="notext cursor-pointer">
+            <div class="menuMobile textLink">Home</div>
+          </router-link>
 
-          <div class="menuMobile">Furniture</div>
+          <router-link to="/furniture/100" class="notext cursor-pointer">
+            <div class="menuMobile">Furniture</div>
+          </router-link>
 
-          <div class="menuMobile">Home Decor</div>
+          <router-link to="/homedecor/100" class="notext cursor-pointer">
+            <div class="menuMobile">Home Decor</div>
+          </router-link>
 
-          <div class="menuMobile">Info</div>
+          <router-link to="info" class="notext cursor-pointer">
+            <div class="menuMobile">Info</div>
+          </router-link>
         </q-drawer>
       </div>
       <!-- Finish menu for 1200px++ -->

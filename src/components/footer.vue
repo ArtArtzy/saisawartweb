@@ -11,11 +11,11 @@
           >We are an anyone’s ultimate destination for getting this perfect kitchen table, cozy armchair or a beautiful and comfy king sized bed! All in all, whatever home furniture you’ll be looking for, look no further!</div>
         </div>
         <div class="col-4 q-pa-md q-pl-xl">
-          <div class="text-h6">WHY BUY FROM US</div>
+          <!-- <div class="text-h6">WHY BUY FROM US</div>
           <div class="q-py-sm">Shipping & Delivery</div>
           <div class="q-pb-sm">Support</div>
           <div class="q-pb-sm">Guarantee</div>
-          <div class="q-pb-sm">Terms & Conditions</div>
+          <div class="q-pb-sm">Terms & Conditions</div>-->
         </div>
         <div class="col-4 q-pa-md">
           <div class="text-h6">CONTACTS</div>
@@ -41,15 +41,7 @@
               </q-card-section>
             </q-card>
           </q-expansion-item>
-          <q-expansion-item class="text-h6" label="Why buy from us" style="width:100%">
-            <q-card class="text-body2">
-              <q-card-section class="bg-grey-3">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                eveniet doloribus ullam aliquid.
-              </q-card-section>
-            </q-card>
-          </q-expansion-item>
+
           <q-expansion-item class="text-h6" label="Contact us">
             <q-card class="text-body2">
               <q-card-section class="bg-grey-3">
