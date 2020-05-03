@@ -44,7 +44,7 @@
       </div>
 
       <!-- New product -->
-      <div class="mainDiv" v-if="innerWidth > 1024">
+      <!-- <div class="mainDiv" v-if="innerWidth > 1024">
         <div class="text-h4 q-my-sm" align="center">New Products</div>
         <div class="row q-mb-xl">
           <div class="col-3" v-for="i in 8" :key="i">
@@ -59,7 +59,7 @@
       <div class="mainDiv" v-if="innerWidth <= 1024 && innerWidth >500">
         <div class="text-h4 q-my-sm" align="center">New Products</div>
         <div class="row q-mb-xl">
-          <div class="col-4" v-for="i in 6" :key="i">
+          <div class="col-4" v-for="i in 4" :key="i">
             <div>
               <img src="statics/image/new01.jpg" style="width:100%" />
             </div>
@@ -92,7 +92,7 @@
             <div class="text-body1" align="center">ZB001 : Pedestal Dining Table</div>
           </div>
         </div>
-      </div>
+      </div>-->
 
       <!-- Get the lastest news -->
       <div class="getNewsBg q-py-xl" v-if="innerWidth  >=1000">
@@ -238,6 +238,9 @@ export default {
         });
         return;
       }
+    },
+    loadNewProduct() {
+      console.log("test");
     },
     onResize(size) {
       (this.innerWidth = size.width), (this.innerHeight = size.height);

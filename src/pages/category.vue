@@ -62,6 +62,7 @@
           </q-tr>
         </template>
       </q-table>
+      <div class="q-py-md">Remark ::: The first category's order id must be 100.</div>
     </div>
   </div>
 </template>

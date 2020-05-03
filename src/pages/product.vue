@@ -43,11 +43,11 @@
                     <div v-if="item.newproduct" style="position:relative;top:-50px;">
                       <img :src="item.imgURL" style="width:90%" />
 
-                      <div class="text-body1">{{item.code}} : {{item.name}}</div>
+                      <div class="text-body1 q-px-sm">{{item.code}} : {{item.name}}</div>
                     </div>
                     <div v-if="!item.newproduct">
                       <img :src="item.imgURL" style="width:90%" />
-                      <div class="text-body1">{{item.code}} : {{item.name}}</div>
+                      <div class="text-body1 q-px-sm">{{item.code}} : {{item.name}}</div>
                     </div>
                   </router-link>
                 </div>
