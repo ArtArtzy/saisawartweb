@@ -11,29 +11,40 @@
           <tr>
             <td style="width:80px;">Page :</td>
             <td>
-              <q-radio
-                v-model="category"
-                val="Furniture"
-                label="Furniture"
-                @input="showCategory()"
-              />
+              <q-radio v-model="page" val="Furniture" label="Furniture" @input="showCategory()" />
             </td>
             <td>
-              <q-radio
-                v-model="category"
-                val="HomeDecor"
-                label="HomeDecor"
-                @input="showCategory()"
-              />
+              <q-radio v-model="page" val="Homedecor" label="HomeDecor" @input="showCategory()" />
             </td>
           </tr>
         </table>
       </div>
-      <div class="col q-pt-md" align="right">
-        <q-btn label="+ Add New Product" class="bg-grey-8 text-white" no-caps @click="addNewBtn()" />
-      </div>
     </div>
+
     <div style="width:100%; max-width:1200px; margin:auto">
+      <div class="row">
+        <div class="q-py-md">
+          <q-select
+            label="Category"
+            v-model="catKey"
+            map-options
+            emit-value
+            :options="catList"
+            stack-label
+            outlined
+            style="width: 400px;"
+            @input="showData()"
+          />
+        </div>
+        <div class="col q-pt-md" align="right">
+          <q-btn
+            label="+ Add New Product"
+            class="bg-grey-8 text-white"
+            @click="addNewBtn()"
+            no-caps
+          />
+        </div>
+      </div>
       <q-table :data="data" :columns="columns" row-key="name" :pagination.sync="pagination">
         <template v-slot:body="props">
           <q-tr :props="props">
@@ -51,7 +62,7 @@
                 <img :src="props.row.imgURL" style="width:150px; height:150px;" />
               </div>
             </q-td>
-            <q-td key="des" :props="props">
+            <q-td key="des" :props="props" :style="{width: '500px', whiteSpace: 'normal'}">
               <div class="q-py-sm" align="left">
                 <div class="text-h4">{{ props.row.code }}</div>
                 <div class="text-h6">{{ props.row.name }}</div>
@@ -82,12 +93,16 @@ import { st } from "../router/index.js";
 export default {
   data() {
     return {
-      category: "Furniture",
+      page: "Furniture",
       pagination: {
         rowsPerPage: 20
       },
       productFullList: [],
+      category: "",
       data: [],
+      catKey: "",
+      catList: [],
+      catFullList: [],
       columns: [
         {
           name: "code",
@@ -144,8 +159,20 @@ export default {
         });
     },
     showCategory() {
-      this.data = [];
-      this.data = this.productFullList.filter(x => x.page == this.category);
+      this.catList = [];
+
+      this.catList = this.catFullList.filter(x => x.page == this.page);
+      setTimeout(() => {
+        this.catKey = this.catList[0].value;
+      }, 1);
+
+      this.showData();
+    },
+    showData() {
+      setTimeout(() => {
+        this.data = [];
+        this.data = this.productFullList.filter(x => x.category == this.catKey);
+      }, 1);
     },
     deleteCat(id) {
       let catName = this.productFullList.filter(x => x.id == id);
@@ -173,15 +200,38 @@ export default {
     },
     editCat(id) {
       this.$router.push("/product/edit/" + id);
+    },
+    async loadCatFull() {
+      this.catFullList = [];
+      await db
+        .collection("category")
+        .get()
+        .then(doc => {
+          doc.forEach(data => {
+            let temp = {
+              label: data.data().categoryName,
+              value: data.id,
+              page: data.data().page,
+              orderId: data.data().orderId
+            };
+            this.catFullList.push(temp);
+          });
+          this.catFullList.sort(
+            (a, b) => Number(a.orderId) - Number(b.orderId)
+          );
+
+          this.showCategory();
+        });
     }
   },
-  mounted() {
+  async mounted() {
     if (this.$route.params.page == "f") {
       this.category = "Furniture";
     } else {
       this.category = "HomeDecor";
     }
-    this.loadProductName();
+    await this.loadProductName();
+    await this.loadCatFull();
   }
 };
 </script>

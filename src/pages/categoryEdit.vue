@@ -11,7 +11,7 @@
                 <q-radio v-model="dataInput.page" val="Furniture" label="Furniture" />
               </td>
               <td>
-                <q-radio v-model="dataInput.page" val="HomeDecor" label="HomeDecor" />
+                <q-radio v-model="dataInput.page" val="Homedecor" label="Homedecor" />
               </td>
             </tr>
           </table>

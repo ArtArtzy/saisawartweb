@@ -8,6 +8,17 @@
         {{categoryTitle}}
       </div>
       <div class="q-pt-md">
+        <q-select
+          label="Category"
+          v-model="dataInput.catKey"
+          map-options
+          emit-value
+          :options="catList"
+          stack-label
+          outlined
+        />
+      </div>
+      <div class="q-pt-md">
         <q-input label="Code" v-model="dataInput.code" stack-label outlined />
       </div>
       <div class="q-pt-md">
@@ -59,13 +70,15 @@ export default {
       categoryTitle: "",
       dataInput: {
         code: "",
+        catKey: "",
         description: "",
         imgurl: "",
         name: "",
         page: "Furniture",
         size: "",
         newproduct: true
-      }
+      },
+      catList: []
     };
   },
   methods: {
@@ -75,6 +88,23 @@ export default {
       } else {
         this.$router.push("/product/h");
       }
+    },
+    loadCat() {
+      this.catList = [];
+      db.collection("category")
+        .where("page", "==", this.dataInput.page)
+        .get()
+        .then(doc => {
+          doc.forEach(data => {
+            let temp = {
+              label: data.data().categoryName,
+              value: data.id
+            };
+            this.catList.push(temp);
+          });
+          this.catList.sort((a, b) => (a.label > b.label ? 1 : -1));
+          this.dataInput.catKey = this.catList[0].value;
+        });
     },
     async addNewCatBtn() {
       //check validattion
@@ -101,7 +131,8 @@ export default {
         size: this.dataInput.size,
         name: this.dataInput.name,
         newproduct: this.dataInput.newproduct,
-        page: this.categoryTitle
+        page: this.categoryTitle,
+        category: this.dataInput.catKey
       });
 
       let getImage = await st
@@ -136,12 +167,13 @@ export default {
       this.categoryTitle = "HomeDecor";
       this.dataInput.page = "HomeDecor";
     }
+    this.loadCat();
   }
 };
 </script>
 
 <style lang="sass"  scoped>
 .myBtn
-    min-width: 120px
+  min-width: 120px
 </style> >
 

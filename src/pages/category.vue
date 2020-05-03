@@ -21,8 +21,8 @@
             <td>
               <q-radio
                 v-model="category"
-                val="HomeDecor"
-                label="HomeDecor"
+                val="Homedecor"
+                label="Homedecor"
                 @input="showCategory()"
               />
             </td>
@@ -38,6 +38,7 @@
         />
       </div>
     </div>
+
     <div style="width:100%; max-width:800px; margin:auto">
       <q-table :data="data" :columns="columns" row-key="name" :pagination.sync="pagination">
         <template v-slot:body="props">
@@ -161,7 +162,7 @@ export default {
     if (this.$route.params.page == "f") {
       this.category = "Furniture";
     } else {
-      this.category = "HomeDecor";
+      this.category = "Homedecor";
     }
     this.loadCategoryName();
   }

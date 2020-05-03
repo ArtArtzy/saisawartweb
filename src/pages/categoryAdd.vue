@@ -87,7 +87,7 @@ export default {
     if (this.$route.params.page == "f") {
       this.categoryTitle = "Furniture";
     } else {
-      this.categoryTitle = "HomeDecor";
+      this.categoryTitle = "Homedecor";
     }
   }
 };

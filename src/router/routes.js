@@ -13,9 +13,15 @@ const routes = [
 
   },
   {
-    path: '/furniture',
-    component: () => import('pages/furniture.vue'),
-    name: 'furniture'
+    path: '/furniture/:cat',
+    component: () => import('pages/product.vue'),
+    name: 'Furniture'
+
+  },
+  {
+    path: '/homedecor/:cat',
+    component: () => import('pages/product.vue'),
+    name: 'Homedecor'
 
   },
   {
@@ -74,6 +80,7 @@ const routes = [
         component: () => import("pages/productEdit.vue"),
         name: "productEdit"
       },
+
     ]
   }
 

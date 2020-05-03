@@ -14,9 +14,11 @@
           </div>
 
           <div class="col-2 setHeightMenu item-center" align="Center">
-            <router-link to="/furniture" class="notext cursor-pointer">Furniture</router-link>
+            <router-link to="/furniture/100" class="notext cursor-pointer">Furniture</router-link>
           </div>
-          <div class="col-2 setHeightMenu cursor-pointer item-center" align="Center">Home Decor</div>
+          <div class="col-2 setHeightMenu cursor-pointer item-center" align="Center">
+            <router-link to="/homedecor/100" class="notext cursor-pointer">Home Decor</router-link>
+          </div>
 
           <div class="col-2 setHeightMenu item-center" align="Center">
             <router-link to="info" class="notext cursor-pointer">Info</router-link>
