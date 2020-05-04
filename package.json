@@ -1,8 +1,8 @@
 {
   "name": "saisawart",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "Saisawart's Collection",
+  "productName": "Saisawart's Collection",
   "cordovaId": "org.cordova.quasar.app",
   "capacitorId": "",
   "author": "art <pakkawat.kh@gmail.com>",
