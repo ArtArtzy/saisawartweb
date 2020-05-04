@@ -6,8 +6,8 @@
       <!-- Refer: https://www.templatemonster.com/demo/63514.html -->
 
       <!-- Big banner -->
-      <div v-if="innerWidth > 1024">
-        <img src="statics/image/banner-s.jpg" style="height:100%; width:100%" alt />
+      <div v-if="innerWidth  > 1024" style="max-width:1200px; margin:auto;">
+        <img src="statics/image/banner-s.jpg" style="height:100%; width:100%;  "  alt />
       </div>
       <!-- Furniture banner -->
       <div class="row mainDiv" v-if="innerWidth > 1024">
@@ -22,8 +22,8 @@
         </div>
         <!-- Info -->
         <div class="col-6">
-          <div class="q-py-md q-px-md">
-            <img src="statics/image/tree.jpg" style="width:100%; " alt />
+          <div class="q-py-md q-pl-md">
+            <img src="statics/image/tree.jpg" style="width:100%; height:806px;" alt />
           </div>
         </div>
       </div>

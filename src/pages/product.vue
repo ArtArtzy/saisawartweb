@@ -128,8 +128,11 @@
             </div>
           </div>
         </div>
+         <hr>
       </div>
+     
     </div>
+    
     <app-footer></app-footer>
   </q-layout>
 </template>

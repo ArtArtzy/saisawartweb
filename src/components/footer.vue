@@ -8,7 +8,7 @@
           <img src="statics/image/logo-1.jpg" style="height:80px" />
           <div
             class="text-body2 box q-pb-md q-px-md"
-          >We are an anyone’s ultimate destination for getting this perfect kitchen table, cozy armchair or a beautiful and comfy king sized bed! All in all, whatever home furniture you’ll be looking for, look no further!</div>
+          >Saisawart Collections is glad to introduce you the world of our Chamcha wood furniture and handcraft products.  We made natural design and high quality of furniture. Each piece has it life.  The quality control is strictly enforced at all production steps.</div>
         </div>
         <div class="col-4 q-pa-md q-pl-xl">
           <!-- <div class="text-h6">WHY BUY FROM US</div>
@@ -23,8 +23,8 @@
             <div
               class="q-py-sm"
             >Address: 234/4 Moo. 3, T. Sannameng, A. Sanzai, Chiangmai Thailand 50210</div>
-            <div class="q-py-sm">Phones: 800-2345-6789; 800-2345-6789</div>
-            <div class="q-py-sm">E-mail: zsihomedecor@gmail.com</div>
+            <div class="q-py-sm">Phones: 66-817645596</div>
+            <div class="q-py-sm">E-mail: saisawartb@gmail.com</div>
           </div>
         </div>
       </div>
@@ -35,9 +35,7 @@
             <q-card class="text-body2">
               <q-card-section class="bg-white">
                 <img src="statics/image/logo-1.jpg" style="width:100%; max-width:300px;" />
-                <br />Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                eveniet doloribus ullam aliquid.
+                <br />Saisawart Collections is glad to introduce you the world of our Chamcha wood furniture and handcraft products.  We made natural design and high quality of furniture. Each piece has it life.  The quality control is strictly enforced at all production steps.
               </q-card-section>
             </q-card>
           </q-expansion-item>
@@ -48,8 +46,8 @@
                  <div
               class="q-py-sm"
             >Address: 234/4 Moo. 3, T. Sannameng, A. Sanzai, Chiangmai Thailand 50210</div>
-            <div class="q-py-sm">Phones: 800-2345-6789; 800-2345-6789</div>
-            <div class="q-py-sm">E-mail: zsihomedecor@gmail.com</div>
+            <div class="q-py-sm">Phones: 66-817645596</div>
+            <div class="q-py-sm">E-mail: saisawartb@gmail.com</div>
               </q-card-section>
             </q-card>
           </q-expansion-item>
