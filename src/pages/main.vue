@@ -7,17 +7,17 @@
 
       <!-- Big banner -->
       <div v-if="innerWidth > 1024">
-        <img src="statics/image/banner.jpg" style="height:100%; width:100%" alt />
+        <img src="statics/image/banner-s.jpg" style="height:100%; width:100%" alt />
       </div>
       <!-- Furniture banner -->
       <div class="row mainDiv" v-if="innerWidth > 1024">
         <div class="col-6">
           <div class="q-py-md">
-            <img src="statics/image/furniture2.jpg" style="width:100%" alt />
+            <img src="statics/image/furniture2_b.jpg" style="width:100%" alt />
           </div>
           <!-- Home Decor banner -->
           <div class="q-pb-md">
-            <img src="statics/image/homedecor.jpg" style="width:100%" alt />
+            <img src="statics/image/homedecor_b.jpg" style="width:100%" alt />
           </div>
         </div>
         <!-- Info -->
@@ -30,11 +30,11 @@
       <div class="row mainDiv" v-if="innerWidth <= 1024">
         <div class="col-12">
           <div class>
-            <img src="statics/image/furniture_m.jpg" style="width:100%" alt />
+            <img src="statics/image/furniture2_b.jpg" style="width:100%" alt />
           </div>
           <!-- Home Decor banner -->
           <div class>
-            <img src="statics/image/homedecor_m.jpg" style="width:100%" alt />
+            <img src="statics/image/homedecor_b.jpg" style="width:100%" alt />
           </div>
           <!-- Info -->
           <div class="col-12 q-pb-md">

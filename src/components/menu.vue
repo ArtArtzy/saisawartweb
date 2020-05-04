@@ -7,7 +7,7 @@
       <div class="row" v-if="innerWidth > 1024">
         <div style="width:300px">
           <router-link to="/" class="notext cursor-pointer">
-            <img src="statics/image/logo.jpg" alt="Saisawart Logo" />
+            <img src="statics/image/logo-1.jpg" style="height:70px;" alt="Saisawart Logo" />
           </router-link>
         </div>
         <div class="col row text-h6 q-px-md">
@@ -23,7 +23,7 @@
           </div>
 
           <div class="col-2 setHeightMenu item-center" align="Center">
-            <router-link to="info" class="notext cursor-pointer">Info</router-link>
+            <router-link to="/info" class="notext cursor-pointer">Info</router-link>
           </div>
 
           <div class="col-4 setHeightMenu item-cente" align="Center">
@@ -59,7 +59,7 @@
           </div>
           <div class="col">
             <router-link to="/" class="notext cursor-pointer">
-              <img src="statics/image/logo.jpg" alt="Saisawart Logo" style="height: 50px;" />
+              <img src="statics/image/logo-1m.jpg" alt="Saisawart Logo" style="height: 40px;" />
             </router-link>
           </div>
 

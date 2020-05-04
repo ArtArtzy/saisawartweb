@@ -5,7 +5,7 @@
       <!-- For menu 1000px++ -->
       <div class="mainDiv q-py-xl row" v-if="innerWidth  >1000">
         <div class="col-4 q-pt-sm">
-          <img src="statics/image/logo.png" />
+          <img src="statics/image/logo-1.jpg" style="height:80px" />
           <div
             class="text-body2 box q-pb-md q-px-md"
           >We are an anyone’s ultimate destination for getting this perfect kitchen table, cozy armchair or a beautiful and comfy king sized bed! All in all, whatever home furniture you’ll be looking for, look no further!</div>
@@ -33,8 +33,8 @@
         <q-list padding class="rounded-borders" style="width:100%">
           <q-expansion-item class="text-h6" label="About">
             <q-card class="text-body2">
-              <q-card-section class="bg-grey-3">
-                <img src="statics/image/logo.png" style="width:100%; max-width:300px;" />
+              <q-card-section class="bg-white">
+                <img src="statics/image/logo-1.jpg" style="width:100%; max-width:300px;" />
                 <br />Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
                 commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
                 eveniet doloribus ullam aliquid.
@@ -44,10 +44,12 @@
 
           <q-expansion-item class="text-h6" label="Contact us">
             <q-card class="text-body2">
-              <q-card-section class="bg-grey-3">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                eveniet doloribus ullam aliquid.
+              <q-card-section class="bg-white">
+                 <div
+              class="q-py-sm"
+            >Address: 234/4 Moo. 3, T. Sannameng, A. Sanzai, Chiangmai Thailand 50210</div>
+            <div class="q-py-sm">Phones: 800-2345-6789; 800-2345-6789</div>
+            <div class="q-py-sm">E-mail: zsihomedecor@gmail.com</div>
               </q-card-section>
             </q-card>
           </q-expansion-item>
@@ -79,7 +81,7 @@ export default {
   width: 100%
   margin: auto;
 .footerBg
-  background-color: #EAEAEA
+  background-color: #FFFFFF
 
 
         
