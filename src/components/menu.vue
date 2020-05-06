@@ -59,7 +59,7 @@
           </div>
           <div class="col">
             <router-link to="/" class="notext cursor-pointer">
-              <img src="statics/image/logo-1m.jpg" alt="Saisawart Logo" style="height: 40px;" />
+              <img src="statics/image/logo-1m2.jpg" alt="Saisawart Logo" style="height: 40px;" />
             </router-link>
           </div>
 
