@@ -11,10 +11,10 @@
           <tr>
             <td style="width:80px;">Page :</td>
             <td>
-              <q-radio v-model="page" val="Furniture" label="Furniture" @input="showCategory()" />
+              <q-radio v-model="page" val="Products" label="Products" @input="showCategory()" />
             </td>
             <td>
-              <q-radio v-model="page" val="Homedecor" label="HomeDecor" @input="showCategory()" />
+              <q-radio v-model="page" val="Gallery" label="Gallery" @input="showCategory()" />
             </td>
           </tr>
         </table>
@@ -38,7 +38,7 @@
         </div>
         <div class="col q-pt-md" align="right">
           <q-btn
-            label="+ Add New Product"
+            label="+ Add New"
             class="bg-grey-8 text-white"
             @click="addNewBtn()"
             no-caps
@@ -59,7 +59,7 @@
             </q-td>
             <q-td key="image" :props="props" style="width:200px;">
               <div class="q-py-sm" align="left">
-                <img :src="props.row.imgURL" style="width:150px; height:150px;" />
+                <img :src="props.row.imgURL  + '?t=' + Math.random()" style="width:150px; height:150px;" />
               </div>
             </q-td>
             <q-td key="des" :props="props" :style="{width: '500px', whiteSpace: 'normal'}">
@@ -93,7 +93,7 @@ import { st } from "../router/index.js";
 export default {
   data() {
     return {
-      page: "Furniture",
+      page: "Products",
       pagination: {
         rowsPerPage: 20
       },
@@ -134,7 +134,7 @@ export default {
   },
   methods: {
     addNewBtn() {
-      if (this.page == "Furniture") {
+      if (this.page == "Products") {
         this.$router.push("/product/add/f");
       } else {
         this.$router.push("/product/add/h");
@@ -226,9 +226,9 @@ export default {
   },
   async mounted() {
     if (this.$route.params.page == "f") {
-      this.category = "Furniture";
+      this.category = "Products";
     } else {
-      this.category = "HomeDecor";
+      this.category = "Gallery";
     }
     await this.loadProductName();
     await this.loadCatFull();

@@ -13,16 +13,16 @@
             <td>
               <q-radio
                 v-model="category"
-                val="Furniture"
-                label="Furniture"
+                val="Products"
+                label="Products"
                 @input="showCategory()"
               />
             </td>
             <td>
               <q-radio
                 v-model="category"
-                val="Homedecor"
-                label="Homedecor"
+                val="Gallery"
+                label="Gallery"
                 @input="showCategory()"
               />
             </td>
@@ -72,7 +72,7 @@ import { db } from "../router/index.js";
 export default {
   data() {
     return {
-      category: "Furniture",
+      category: "Products",
       pagination: {
         rowsPerPage: 0
       },
@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     addNewBtn() {
-      if (this.category == "Furniture") {
+      if (this.category == "Products") {
         this.$router.push("/category/add/f");
       } else {
         this.$router.push("/category/add/h");
@@ -161,9 +161,9 @@ export default {
   },
   mounted() {
     if (this.$route.params.page == "f") {
-      this.category = "Furniture";
+      this.category = "Products";
     } else {
-      this.category = "Homedecor";
+      this.category = "Gallery";
     }
     this.loadCategoryName();
   }

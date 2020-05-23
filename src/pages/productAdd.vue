@@ -74,7 +74,7 @@ export default {
         description: "",
         imgurl: "",
         name: "",
-        page: "Furniture",
+        page: "Products",
         size: "",
         newproduct: true
       },
@@ -161,11 +161,11 @@ export default {
   },
   mounted() {
     if (this.$route.params.page == "f") {
-      this.categoryTitle = "Furniture";
-      this.dataInput.page = "Furniture";
+      this.categoryTitle = "Products";
+      this.dataInput.page = "Products";
     } else {
-      this.categoryTitle = "HomeDecor";
-      this.dataInput.page = "Homedecor";
+      this.categoryTitle = "Gallery";
+      this.dataInput.page = "Gallery";
     }
     this.loadCat();
   }

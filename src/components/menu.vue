@@ -16,10 +16,10 @@
           </div>
 
           <div class="col-2 setHeightMenu item-center" align="Center">
-            <router-link to="/furniture/100" class="notext cursor-pointer">Furniture</router-link>
+            <router-link to="/products/100" class="notext cursor-pointer">Products</router-link>
           </div>
           <div class="col-2 setHeightMenu cursor-pointer item-center" align="Center">
-            <router-link to="/homedecor/100" class="notext cursor-pointer">Home Decor</router-link>
+            <router-link to="/gallery/100" class="notext cursor-pointer">Gallery</router-link>
           </div>
 
           <div class="col-2 setHeightMenu item-center" align="Center">
@@ -89,15 +89,15 @@
             <div class="menuMobile textLink">Home</div>
           </router-link>
 
-          <router-link to="/furniture/100" class="notext cursor-pointer">
-            <div class="menuMobile">Furniture</div>
+          <router-link to="/products/100" class="notext cursor-pointer">
+            <div class="menuMobile">Products</div>
           </router-link>
 
-          <router-link to="/homedecor/100" class="notext cursor-pointer">
-            <div class="menuMobile">Home Decor</div>
+          <router-link to="/gallery/100" class="notext cursor-pointer">
+            <div class="menuMobile">Gallery</div>
           </router-link>
 
-          <router-link to="info" class="notext cursor-pointer">
+          <router-link to="/info" class="notext cursor-pointer">
             <div class="menuMobile">Info</div>
           </router-link>
         </q-drawer>

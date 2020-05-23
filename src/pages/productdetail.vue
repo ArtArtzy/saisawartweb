@@ -5,19 +5,19 @@
     <div class="mainDiv">
       <q-resize-observer @resize="onResize" />
       <div class="q-pa-md text-h6" v-if="pageId=='f'">
-        <router-link to="/furniture/100" class="cursor-pointer notext">
-          <u>Furniture</u>
+        <router-link to="/products/100" class="cursor-pointer notext">
+          <u>Products</u>
         </router-link>&nbsp;>
-        <router-link :to="'/furniture/' + catName.orderId" class="cursor-pointer notext">
+        <router-link :to="'/products/' + catName.orderId" class="cursor-pointer notext">
           <u>{{catName.categoryName}}</u>
         </router-link>
         &nbsp;> {{data.title}}
       </div>
       <div class="q-pa-md text-h6" v-if="pageId!='f'">
-        <router-link to="/homedecor/100" class="cursor-pointer notext">
-          <u>Home Decor</u>
+        <router-link to="/gallery/100" class="cursor-pointer notext">
+          <u>Gallery</u>
         </router-link>&nbsp;>
-        <router-link :to="'/homedecor/' + catName.orderId" class="cursor-pointer notext">
+        <router-link :to="'/gallery/' + catName.orderId" class="cursor-pointer notext">
           <u>{{catName.categoryName}}</u>
         </router-link>
         &nbsp;> {{data.title}}

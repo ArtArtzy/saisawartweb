@@ -10,7 +10,7 @@
           <div class="col-4 borderR" style="width:250px">
             <div class="text-h5 q-pb-md q-px-sm">{{pageName}}</div>
             <div v-for="(item,index) in typeOption" :key="index">
-              <router-link :to="'/furniture/' + item.value " class="cursor-pointer notext">
+              <router-link :to="'/products/' + item.value " class="cursor-pointer notext">
                 <div class="q-pa-sm row" :class="{'activeMenu' : item.value == catCode.toString()}">
                   <div class="col-12">{{item.label}}</div>
                 </div>
@@ -147,7 +147,7 @@ export default {
     return {
       innerWidth: window.innerWidth,
       innerHeight: window.innerHeight,
-      pageName: "Furniture",
+      pageName: "Products",
       currentPage: 1,
       type: "Table",
       typeOption: [],

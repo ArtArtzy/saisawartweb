@@ -13,15 +13,15 @@ const routes = [
 
   },
   {
-    path: '/furniture/:cat',
+    path: '/products/:cat',
     component: () => import('pages/product.vue'),
-    name: 'Furniture'
+    name: 'Products'
 
   },
   {
-    path: '/homedecor/:cat',
+    path: '/gallery/:cat',
     component: () => import('pages/product2.vue'),
-    name: 'Homedecor'
+    name: 'Gallery'
 
   },
   {

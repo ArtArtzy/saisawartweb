@@ -85,9 +85,9 @@ export default {
   },
   mounted() {
     if (this.$route.params.page == "f") {
-      this.categoryTitle = "Furniture";
+      this.categoryTitle = "Products";
     } else {
-      this.categoryTitle = "Homedecor";
+      this.categoryTitle = "Gallery";
     }
   }
 };

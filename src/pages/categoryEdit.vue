@@ -8,10 +8,10 @@
             <tr>
               <td style="width:80px;">Page :</td>
               <td>
-                <q-radio v-model="dataInput.page" val="Furniture" label="Furniture" />
+                <q-radio v-model="dataInput.page" val="Products" label="Products" />
               </td>
               <td>
-                <q-radio v-model="dataInput.page" val="Homedecor" label="Homedecor" />
+                <q-radio v-model="dataInput.page" val="Gallery" label="Gallery" />
               </td>
             </tr>
           </table>
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     backToCatMain() {
-      if (this.dataInput.page == "Furniture") {
+      if (this.dataInput.page == "Products") {
         this.$router.push("/category/f");
       } else {
         this.$router.push("/category/h");
