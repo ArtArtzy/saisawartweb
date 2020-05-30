@@ -41,12 +41,12 @@
                   </div>
                   <router-link :to="'/detail/f/' + item.id" class="cursor-pointer notext">
                     <div v-if="item.newproduct" style="position:relative;top:-50px;">
-                      <img :src="item.imgURL" style="width:90%" />
+                      <q-img :src="item.imgURL" style="width:90%" />
 
                       <div class="text-body1 q-px-sm">{{item.code}} : {{item.name}}</div>
                     </div>
                     <div v-if="!item.newproduct">
-                      <img :src="item.imgURL" style="width:90%" />
+                      <q-img :src="item.imgURL" style="width:90%" />
                       <div class="text-body1 q-px-sm">{{item.code}} : {{item.name}}</div>
                     </div>
                   </router-link>
@@ -70,7 +70,7 @@
         <div v-if="innerWidth <= 800">
           <div class="text-h6 q-pa-sm">{{pageName}}</div>
           <div style="width:90%; max-width:500px;margin:auto" class="q-pb-md">
-            <q-select outlined v-model="type" map-options emit-value :options="typeOption"></q-select>
+            <q-select outlined v-model="type" map-options emit-value :options="typeOption" @input="changePage()"></q-select>
           </div>
           <hr style="width:90%" />
           <div class="row q-pt-md">
@@ -94,7 +94,7 @@
                 <router-link :to="'/detail/f/' + item.id" class="cursor-pointer notext">
                   <div v-if="item.newproduct" style="position:relative;top:-50px;">
                     <div style="margin:auto;" align="center">
-                      <img :src="item.imgURL" style="width:90%; max-width:250px; " />
+                      <q-img :src="item.imgURL" style="width:90%; max-width:250px; " />
                     </div>
                     <div
                       style="width:90%; margin:auto;"
@@ -104,7 +104,7 @@
                   </div>
                   <div v-if="!item.newproduct">
                     <div style="margin:auto;" align="center">
-                      <img :src="item.imgURL" style="width:90%; max-width:250px; " />
+                      <q-img :src="item.imgURL" style="width:90%; max-width:250px; " />
                     </div>
                     <div
                       style="width:90%; margin:auto;"
@@ -166,6 +166,9 @@ export default {
     appMenu
   },
   methods: {
+    changePage(){
+      this.$router.push("/products/" + this.type)
+    },
     loadCatagory() {
       this.catList = [];
       this.typeOption = [];
