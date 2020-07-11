@@ -7,56 +7,54 @@
 
       <!-- Big banner -->
       <div v-if="innerWidth  > 1024" style="max-width:1200px; margin:auto;">
-        <img src="statics/image/banner-s.jpg" style="height:100%; width:100%;  "  alt />
+        <img src="statics/image/banner-s.jpg" style="height:100%; width:100%;  " alt />
       </div>
       <!-- Furniture banner -->
       <div class="row mainDiv" v-if="innerWidth > 1024">
         <div class="col-6">
           <router-link to="/products/100" class="notext cursor-pointer">
-          <div class="q-py-md">
-            <img src="statics/image/furniture2_b.jpg" style="width:100%" alt />
-          </div>
+            <div class="q-py-md">
+              <img src="statics/image/furniture2_b.jpg" style="width:100%" alt />
+            </div>
           </router-link>
           <!-- Home Decor banner -->
           <router-link to="/gallery/100" class="notext cursor-pointer">
-          <div class="q-pb-md">
-            <img src="statics/image/homedecor_b.jpg" style="width:100%" alt />
-          </div>
+            <div class="q-pb-md">
+              <img src="statics/image/homedecor_b.jpg" style="width:100%" alt />
+            </div>
           </router-link>
         </div>
-      
+
         <!-- Info -->
-    
+
         <div class="col-6">
           <router-link to="/info" class="notext cursor-pointer">
-          <div class="q-py-md q-pl-md">
-            <img src="statics/image/tree.jpg" style="width:100%; height:806px;" alt />
-          </div>
+            <div class="q-py-md q-pl-md">
+              <img src="statics/image/tree2x.jpg" style="width:100%; height:806px;" alt />
+            </div>
           </router-link>
         </div>
-      
       </div>
       <div class="row mainDiv" v-if="innerWidth <= 1024">
         <div class="col-12">
           <router-link to="/products/100" class="notext cursor-pointer">
-          <div class>
-            <img src="statics/image/furniture2_b.jpg" style="width:100%" alt />
-          </div>
-           </router-link>
+            <div class>
+              <img src="statics/image/furniture2_b.jpg" style="width:100%" alt />
+            </div>
+          </router-link>
           <!-- Home Decor banner -->
           <router-link to="/gallery/100" class="notext cursor-pointer">
-          <div class>
-            <img src="statics/image/homedecor_b.jpg" style="width:100%" alt />
-          </div>
+            <div class>
+              <img src="statics/image/homedecor_b.jpg" style="width:100%" alt />
+            </div>
           </router-link>
           <!-- Info -->
 
           <div class="col-12 q-pb-md">
             <router-link to="/info" class="notext cursor-pointer">
-            <img src="statics/image/tree_m.jpg" style="width:100%; " alt />
+              <img src="statics/image/tree_m2.jpg" style="width:100%; " alt />
             </router-link>
           </div>
-
         </div>
       </div>
 
